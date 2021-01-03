@@ -1,3 +1,7 @@
+//Package keyboard abstracts all types of keyboard inputs that may be required for a program
+// The input types supported are : float64 type.
+// one variable can be read with a single function call
+// Function will return with 0 and an error object if the input is invalid
 package keyboard
 
 import (
@@ -9,6 +13,8 @@ import (
 	"strings"
 )
 
+//GetFloat reads the input from the keyboard and attempts to convert it into float value
+// It returns with 0 and an error object if the input is invalid
 func GetFloat() (float64, error) {
 	reader := bufio.NewReader(os.Stdin)
 	input, err1 := reader.ReadString('\n')
