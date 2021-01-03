@@ -15,6 +15,7 @@ import (
 
 //GetFloat reads the input from the keyboard and attempts to convert it into float value
 // It returns with 0 and an error object if the input is invalid
+// It returns a float value if no error is detected
 func GetFloat() (float64, error) {
 	reader := bufio.NewReader(os.Stdin)
 	input, err1 := reader.ReadString('\n')
