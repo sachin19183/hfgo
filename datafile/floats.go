@@ -9,20 +9,23 @@ import (
 )
 
 // GetFloat function reads float data from a file
-func GetFloat(fileName string) ([3]float64, error) {
-	var numbers [3]float64
+func GetFloat(fileName string) ([]float64, error) {
+	var numbers []float64
 	file, err := os.Open(fileName)
 	if err != nil {
 		return numbers, err
 	}
 	scanner := bufio.NewScanner(file)
-	i := 0
+	//i := 0
+	var tmpNum float64
 	for scanner.Scan() {
-		numbers[i], err = strconv.ParseFloat(scanner.Text(), 64)
+		tmpNum, err = strconv.ParseFloat(scanner.Text(), 64)
 		if err != nil {
 			return numbers, err
+		} else {
+			numbers = append(numbers, tmpNum)
 		}
-		i++
+		//i++
 	}
 	err = file.Close()
 	if err != nil {
